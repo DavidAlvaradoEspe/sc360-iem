@@ -1,0 +1,87 @@
+.eq-toggle-container {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #0a0a1e 100%);
+    border-radius: 8px;
+    border: 1px solid #2a2a4e;
+}
+
+.eq-toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Hide default checkbox */
+.eq-toggle-checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Custom checkbox */
+.eq-toggle-custom {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #3a3a5e;
+    border-radius: 4px;
+    background: #0a0a1e;
+    transition: all 0.2s ease;
+}
+
+.eq-toggle-custom::after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid #00c8ff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Checked state */
+.eq-toggle-checkbox:checked+.eq-toggle-custom {
+    background: linear-gradient(135deg, #00c8ff 0%, #0080ff 100%);
+    border-color: #00c8ff;
+    box-shadow: 0 0 12px rgba(0, 200, 255, 0.5);
+}
+
+.eq-toggle-checkbox:checked+.eq-toggle-custom::after {
+    display: block;
+}
+
+/* Hover state */
+.eq-toggle-label:hover .eq-toggle-custom {
+    border-color: #00c8ff;
+    box-shadow: 0 0 8px rgba(0, 200, 255, 0.3);
+}
+
+/* Text */
+.eq-toggle-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #e0e0ff;
+}
+
+.eq-toggle-hint {
+    font-size: 11px;
+    font-weight: 400;
+    color: #6a6a8a;
+}
+
+/* Focus state for accessibility */
+.eq-toggle-checkbox:focus+.eq-toggle-custom {
+    outline: 2px solid #00c8ff;
+    outline-offset: 2px;
+}

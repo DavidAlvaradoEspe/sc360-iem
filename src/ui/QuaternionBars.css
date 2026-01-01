@@ -1,0 +1,98 @@
+.quaternion-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #0a0a1e 100%);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #2a2a4e;
+    min-width: 220px;
+}
+
+.bars-header {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 8px;
+}
+
+.bars-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #e0e0ff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.bars-subtitle {
+    font-size: 10px;
+    font-weight: 500;
+    color: #6a6a8a;
+    letter-spacing: 1px;
+}
+
+.bars-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bar-container {
+    display: grid;
+    grid-template-columns: 24px 1fr 60px;
+    align-items: center;
+    gap: 12px;
+}
+
+.bar-label {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    color: #e0e0ff;
+    text-align: center;
+}
+
+.bar-track {
+    position: relative;
+    height: 20px;
+    background: #0a0a1e;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #2a2a4e;
+}
+
+.bar-center {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #4a4a6e;
+    z-index: 1;
+}
+
+.bar-fill {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    border-radius: 2px;
+    transition: width 0.05s ease-out, left 0.05s ease-out;
+    box-shadow: 0 0 10px currentColor;
+    opacity: 0.9;
+}
+
+.bar-fill.positive {
+    left: 50%;
+}
+
+.bar-fill.negative {
+    right: 50%;
+}
+
+.bar-value {
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    color: #a0a0c0;
+    text-align: right;
+}
