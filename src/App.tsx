@@ -161,7 +161,6 @@ function App() {
       <header className="app-header">
         <h1 className="app-title">
           <span className="title-suffix">SC360</span>
-          <span className="title-suffix">David Juárez</span>
         </h1>
       </header>
 
