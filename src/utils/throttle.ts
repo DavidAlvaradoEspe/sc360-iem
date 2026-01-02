@@ -1,7 +1,7 @@
 /**
  * Creates a throttled version of a function using requestAnimationFrame
  */
-export function rafThrottle<T extends (...args: unknown[]) => void>(
+export function rafThrottle<T extends (...args: any[]) => void>(
     callback: T
 ): (...args: Parameters<T>) => void {
     let rafId: number | null = null;

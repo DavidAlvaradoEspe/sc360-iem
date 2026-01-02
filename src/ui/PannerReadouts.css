@@ -1,0 +1,36 @@
+.panner-input {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    border: 1px solid #3a3a5a;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 14px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    text-align: center;
+    width: 80px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.panner-input:focus {
+    outline: none;
+    border-color: #6c63ff;
+    box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.3);
+}
+
+.panner-input:hover {
+    border-color: #5a5a7a;
+}
+
+.panner-input::selection {
+    background-color: #6c63ff;
+    color: #ffffff;
+}
+
+@media (max-width: 480px) {
+    .panner-input {
+        width: 100%;
+        max-width: 120px;
+        font-size: 13px;
+        padding: 8px;
+    }
+}

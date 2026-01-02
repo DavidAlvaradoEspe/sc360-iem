@@ -38,7 +38,7 @@ export const Panner2D: React.FC<Panner2DProps> = ({
     const throttledOnChange = useCallback(
         rafThrottle((az: number, el: number) => {
             onChange(az, el);
-        }) as (az: number, el: number) => void,
+        }),
         [onChange]
     );
 
@@ -57,6 +57,12 @@ export const Panner2D: React.FC<Panner2DProps> = ({
 
     const handlePointerDown = useCallback((e: React.PointerEvent) => {
         e.preventDefault();
+
+        // Quitar focus de cualquier input activo (para que PannerReadouts se actualice)
+        if (document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+        }
+
         setIsDragging(true);
         (e.target as HTMLElement).setPointerCapture(e.pointerId);
         handlePointerEvent(e);
@@ -199,57 +205,6 @@ export const Panner2D: React.FC<Panner2DProps> = ({
                     className="panner-dot-inner"
                 />
             </svg>
-
-            {/* Numeric readouts with inputs */}
-            <div className="panner-readouts">
-                <div className="panner-readout">
-                    <label className="readout-label" htmlFor="azimuth-input">Azimuth</label>
-                    <input
-                        id="azimuth-input"
-                        type="number"
-                        className="readout-input"
-                        value={azimuth.toFixed(1)}
-                        onChange={(e) => {
-                            const value = parseFloat(e.target.value);
-                            if (!isNaN(value)) {
-                                onChange(value, elevation);
-                            }
-                        }}
-                        onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
-                                e.currentTarget.blur();
-                            }
-                        }}
-                        step="0.1"
-                    />
-                    <span className="readout-unit">°</span>
-                </div>
-                <div className="panner-readout">
-                    <label className="readout-label" htmlFor="elevation-input">Elevation</label>
-                    <input
-                        id="elevation-input"
-                        type="number"
-                        className="readout-input"
-                        value={elevation.toFixed(1)}
-                        onChange={(e) => {
-                            const value = parseFloat(e.target.value);
-                            if (!isNaN(value)) {
-                                const clampedValue = Math.max(0, Math.min(90, value));
-                                onChange(azimuth, clampedValue);
-                            }
-                        }}
-                        onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
-                                e.currentTarget.blur();
-                            }
-                        }}
-                        step="0.1"
-                        min="0"
-                        max="90"
-                    />
-                    <span className="readout-unit">°</span>
-                </div>
-            </div>
         </div>
     );
 };

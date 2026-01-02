@@ -24,7 +24,7 @@ export const EQToggle: React.FC<EQToggleProps> = ({ enabled, onChange }) => {
                 <span className="eq-toggle-custom"></span>
                 <span className="eq-toggle-text">
                     Front/Back EQ
-                    <span className="eq-toggle-hint">Enhances spatial perception</span>
+                    <span className="eq-toggle-hint">Work in progress</span>
                 </span>
             </label>
         </div>

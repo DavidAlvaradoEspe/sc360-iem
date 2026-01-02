@@ -15,6 +15,7 @@ import { Panner2D } from './ui/Panner2D';
 import { QuaternionBars } from './ui/QuaternionBars';
 import { Transport } from './ui/Transport';
 import { EQToggle } from './ui/EQToggle';
+import { PannerReadouts } from './ui/PannerReadouts';
 import './App.css';
 
 interface WXYZValues {
@@ -71,7 +72,7 @@ function App() {
       }
     };
 
-    initAudio();
+    initAudio().catch(console.error);
 
     // Cleanup on unmount
     return () => {
@@ -159,12 +160,9 @@ function App() {
     <div className="app-container">
       <header className="app-header">
         <h1 className="app-title">
-          <span className="title-gradient">SC360</span>
-          <span className="title-suffix">Spatial Encoder</span>
+          <span className="title-suffix">SC360</span>
+          <span className="title-suffix">David Juárez</span>
         </h1>
-        <p className="app-subtitle">
-          FOA Mono Encoder → Binaural Decoder
-        </p>
       </header>
 
       <main className="app-main">
@@ -181,19 +179,12 @@ function App() {
 
           {/* Right side: WXYZ Display */}
           <section className="display-section">
+            <PannerReadouts
+              azimuth={azimuth}
+              elevation={elevation}
+              onChange={handlePannerChange}
+            />
             <QuaternionBars values={wxyz} />
-
-            {/* Coordinate info */}
-            <div className="coordinate-info">
-              <div className="info-block">
-                <span className="info-label">Normalization</span>
-                <span className="info-value">SN3D</span>
-              </div>
-              <div className="info-block">
-                <span className="info-label">Order</span>
-                <span className="info-value">1 (FOA)</span>
-              </div>
-            </div>
           </section>
         </div>
 
@@ -215,7 +206,7 @@ function App() {
       </main>
 
       <footer className="app-footer">
-        <p>Web Audio API • JSAmbisonics • React</p>
+        <p>Developed by: David Alvarado - 2026</p>
       </footer>
     </div>
   );
